@@ -4,7 +4,8 @@ from tkinter.filedialog import *
 
 # Main window
 root = Tk(className="Aubreys text-editor (:")
-textArea = scrolledtext.ScrolledText(root, width=100, height=40, bg="white", fg="black")
+textArea = scrolledtext.ScrolledText(root, width=100, height=40)
+
 textArea.pack()
 
 # Functions
@@ -22,8 +23,13 @@ def findinfile():
     print(findString.upper() in textdata.upper())
 
 
+def color1():
+    root.destroy()
+    import notepadclbalck
 
-
+def color3():
+    root.destroy()
+    import norecolor3
 
 def newfile():
     if len(textArea.get("1.0", END+"-1c")) > 0:
@@ -72,7 +78,9 @@ fileMenu.add_command(label="Exit", command=exit)
 helpMenu = Menu(menu)
 menu.add_cascade(label="Help")
 menu.add_command(label="About", command=about)
-
+menu.add_cascade(label="Appearance", menu=helpMenu)
+helpMenu.add_command(label="Black and White", command=color1)
+helpMenu.add_command(label="Black and Red", command=color3)
 
 
 # Keep_window_open
